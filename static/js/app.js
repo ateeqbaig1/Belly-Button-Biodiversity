@@ -91,7 +91,7 @@ function buildGauge(sample) {
         t: 200,
         pad: 4
       },
-      title: "<b>Belly Button Washing Frequency</b> <br> Scrubs per Week",
+      title: "<b>Gauge Chart</b> <br> Scrubs per Week",
       height: 600,
       width: 600,
       xaxis: {
@@ -140,7 +140,7 @@ function buildCharts(sample) {
           },
           showarrow: false,
           text: "Top 10 Samples",
-          x: 0.3,
+          x: 1,
           y: 0.5
         }
       ],
@@ -152,13 +152,41 @@ function buildCharts(sample) {
       values: filtered_values,
       labels: filtered_otu_ids.map(String),
       text: filtered_otu_labels,
-      hole: .4,
+      hole: .5,
       textinfo: 'percent'
     }];
     console.log(trace1);
     const PIE = document.getElementById('pie');
     Plotly.newPlot(PIE, trace1, layout1);
 
+   /* const trace1 = [{
+      x: response.sample_values,
+      y: response.otu_ids,
+      // text: response.otu_labels,
+      type: 'bar',
+      orientation: 'h'
+    }];*/
+/*    const layout1 = {
+      title: 'Bar Chart',
+      height: 500,
+      width: 500
+      font:{
+      family: 'Raleway, sans-serif'
+      },
+    showlegend: false,
+    xaxis: {
+      tickangle: -45
+    },
+    yaxis: {
+      zeroline: false,
+      gridwidth: 2
+    },
+    bargap :0.05
+    };
+    console.log(trace1);*/
+  /*  Plotly.newPlot('bar', trace1, layout1);
+  });
+*/
     const trace2 = [{
       x: response.otu_ids,
       y: response.sample_values,
@@ -170,7 +198,7 @@ function buildCharts(sample) {
       }
     }];
     const layout2 = {
-      title: 'Bubble chart for each sample',
+      title: 'Bubble chart - Each Sample',
       showlegend: false,
       height: 600,
       width: 1400
